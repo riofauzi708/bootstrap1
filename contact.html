@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Contact me</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="asset/css/contact.css">
-        <link rel="stylesheet" href="asset/css/index.css">
-        <link rel="stylesheet" href="asset/css/nav.css">
-    </head>
-    <body>
-        <nav class="navbar">
-            <ul class="navbar-ul">
-                <div class="navbar-li">
-                    <li>
-                        <img class="navbar-logo" src="asset/img/logo-dumbways.png" alt="">
-                    </li>
-                    <li>
-                        <a class="navbar-link" class="active" href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a class="navbar-link" class="active" href="blog.html">My Project</a>
-                    </li>
-                    <li>
-                      <a class="navbar-link" class="active" href="testimonial.html">Testimonials</a>
-                    </li>
-                    </div>
-                    <div>
-                    <li>
-                        <a href="contact.html" class="navbar-contact-btn">Contact me</a>
-                    </li>
-                    <img class="menu-icon-style" style="cursor: pointer;" onclick="openMenu(hidden)" src="asset/img/menu-icon.webp">
-                    </div>
-                </ul>
-            </nav>
-            <div id="display-menu" class="display-menu, hidden">
-              <a  class="navbar-link-menu menu-active" href="home.html">Home</a>
-              <a  class="navbar-link-menu menu-active" href="blog.html">My Project</a>
-              <a  class="navbar-link-menu menu-active" href="contact.html">Contact Me</a>
-              <a  class="navbar-link-menu menu-active" href="testimonial.html">Testimonials</a>
+<head>
+    <title>Contact me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home.html">
+            <img src="asset/img/logo-dumbways.png" alt="" width="40" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-black" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="project.html">Add Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="testimonial.html">Testimonials</a>
+                </li>
+            </ul>
+            <a href="contact.html" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
         </div>
+    </nav>
 
-        <h1>GET IN TOUCH</h1>
-        <div style="display: flex; width: 100%; justify-content: center;">
-          <div class="form-container">
-            <label class="label-style" for="name">Name</label>
-            <input class="input-style" id="name" />
-            <label class="label-style" for="email">Email</label>
-            <input class="input-style" id="email"/>
-            <label class="label-style" for="phoneNumber">Phone Number</label>
-            <input class="input-style" id="phoneNumber"/>
-            <label class="label-style" for="subject">Subject</label>
-            <select class="input-style" id="subject">
-              <option value="Frontend Developer">Frontend Developer</option>
-              <option value="Backend Developer">Backend Developer</option>
-              <option value="Fullstack Developer">Fullstack Developer</option>
-            </select>
-            <label class="label-style" for="message">Your Message</label>
-            <textarea class="input-style" id="message" style="height: 100px;"></textarea>
-            <button class="btn-submit" onclick="submitData()">submit</button>
-          </div>
+    <h1 class="text-center my-5">GET IN TOUCH</h1>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select class="form-control" id="subject">
+                            <option value="Frontend Developer">Frontend Developer</option>
+                            <option value="Backend Developer">Backend Developer</option>
+                            <option value="Fullstack Developer">Fullstack Developer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea class="form-control" id="message" rows="5"></textarea>
+                    </div>
+                    <button type="submit" onclick="submitData()" class="btn btn-primary mb-4">Submit</button>
+                </form>
+            </div>
         </div>
-        <script src="asset/js/contact.js"></script>
-        <script src="asset/js/nav.js"></script>
-    </body>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="asset/js/contact.js"></script>
+</body>
 </html>
