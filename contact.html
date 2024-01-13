@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact me</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="asset/css/contact.css">
+        <link rel="stylesheet" href="asset/css/index.css">
+        <link rel="stylesheet" href="asset/css/nav.css">
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="navbar-ul">
+                <div class="navbar-li">
+                    <li>
+                        <img class="navbar-logo" src="asset/img/logo-dumbways.png" alt="">
+                    </li>
+                    <li>
+                        <a class="navbar-link" class="active" href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="navbar-link" class="active" href="blog.html">My Project</a>
+                    </li>
+                    <li>
+                      <a class="navbar-link" class="active" href="testimonial.html">Testimonials</a>
+                    </li>
+                    </div>
+                    <div>
+                    <li>
+                        <a href="contact.html" class="navbar-contact-btn">Contact me</a>
+                    </li>
+                    <img class="menu-icon-style" style="cursor: pointer;" onclick="openMenu(hidden)" src="asset/img/menu-icon.webp">
+                    </div>
+                </ul>
+            </nav>
+            <div id="display-menu" class="display-menu, hidden">
+              <a  class="navbar-link-menu menu-active" href="home.html">Home</a>
+              <a  class="navbar-link-menu menu-active" href="blog.html">My Project</a>
+              <a  class="navbar-link-menu menu-active" href="contact.html">Contact Me</a>
+              <a  class="navbar-link-menu menu-active" href="testimonial.html">Testimonials</a>
+        </div>
+
+        <h1>GET IN TOUCH</h1>
+        <div style="display: flex; width: 100%; justify-content: center;">
+          <div class="form-container">
+            <label class="label-style" for="name">Name</label>
+            <input class="input-style" id="name" />
+            <label class="label-style" for="email">Email</label>
+            <input class="input-style" id="email"/>
+            <label class="label-style" for="phoneNumber">Phone Number</label>
+            <input class="input-style" id="phoneNumber"/>
+            <label class="label-style" for="subject">Subject</label>
+            <select class="input-style" id="subject">
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="Fullstack Developer">Fullstack Developer</option>
+            </select>
+            <label class="label-style" for="message">Your Message</label>
+            <textarea class="input-style" id="message" style="height: 100px;"></textarea>
+            <button class="btn-submit" onclick="submitData()">submit</button>
+          </div>
+        </div>
+        <script src="asset/js/contact.js"></script>
+        <script src="asset/js/nav.js"></script>
+    </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Detail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #e3e7eb;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home.html">
+        <img src="asset/img/logo-dumbways.png" alt="" width="40" height="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-black" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="project.html">Add Project</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="testimonial.html">Testimonials</a>
+            </li>
+        </ul>
+        <a href="contact.html" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
+    </div>
+</nav>
+    <h1 class="text-center my-5">Dumbways Web App</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-fluid" src="asset/img/painting-mountain.jpg" alt="paintings">
+            </div>
+            <div class="col-md-6">
+                <h3 class="mt-4">Duration</h3>
+                <p id="startDateParagraph">
+                    <img class="img-fluid mx-2 mt-0" src="asset/img/calendar.png" width="20" height="20" alt="Date">12 Jan 2024 - 11 Feb 2024
+                </p>
+                <p id="durationParagraph">
+                  <img class="img-fluid mx-2 mt-0" src="asset/img/clock-logo.png" width="20" height="20" alt="Duration">1 month
+                </p>
+                <h3 class="mt-4">Technologies</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <p>
+                            <img class="img-fluid mx-2" src="asset/img/react.png" alt="react" width="20" height="20">React JS
+                        </p>
+                        <p>
+                            <img class="img-fluid mx-2" src="asset/img/javascript.png" alt="javascript" width="20" height="20">Javascript
+                        </p>
+                    </div>
+                    <div class="col-6">
+                        <p>
+                            <img class="img-fluid mx-2" src="asset/img/node.png" alt="node" width="20" height="20">Node Js
+                        </p>
+                        <p>
+                            <img class="img-fluid mx-2" src="asset/img/socket-io.png" alt="socket-io" width="20" height="20">Socket IO
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+              <p>Painting with technology represents a fascinating evolution in the realm of art. 
+                This practice combines traditional artistic skill with modern tools and techniques, 
+                opening up new expressive and creative possibilities.</p> 
+              <p>One of the most common ways to paint with technology is through the use of digital graphic software, 
+                which allows artists to create digital artwork using tools similar to those of traditional painting 
+                but with a wide range of customizable effects and options.</p> 
+              <p>Another form of painting with technology is digital screen painting, 
+                which involves the use of pressure-sensitive graphic tablets and interactive monitors 
+                to create artwork directly on a digital display. 
+                This practice offers an experience similar to traditional painting, 
+                allowing artists to experiment with colors, brushes, and textures in an intuitive way. </p>
+              <p>In addition to digital painting, some innovative technologies allow artists 
+                to explore new forms of artistic expression, such as virtual reality (VR) and augmented reality (AR). 
+                With the use of VR and AR devices, artists can create interactive and immersive three-dimensional 
+                artworks, allowing audiences to fully immerse themselves in their creations.</p> 
+              <p>Painting with technology also offers opportunities for collaboration and sharing, 
+                as artists can work together remotely using online platforms and sharing tools. 
+                Furthermore, digital artworks can be easily distributed and shared on online platforms, 
+                allowing artists to reach a global audience quickly and effectively.</p>
+              <p> Ultimately, painting with technology represents a fascinating intersection of art and innovation, 
+                offering artists new ways to express themselves and engage with audiences in the digital age.</p>
+              <p>Certainly! Both painting and technology hold significant importance in the realm of human 
+                creativity and expression. Painting serves as a powerful medium for conveying emotions, 
+                ideas, and messages through imagery and symbolism. It captures the essence of a moment, 
+                evokes powerful emotions, and communicates complex narratives without the need for words. 
+                Additionally, paintings have historical and cultural significance, serving as a record of 
+                human experiences, traditions, and perspectives. They provide insights into different eras, 
+                societies, and artistic movements, enriching our understanding of the past. 
+                The act of creating and experiencing paintings fosters creativity, introspection, 
+                and aesthetic appreciation, contributing to the enrichment of human culture and individual well-being.</p>
+              <p>On the other hand, technology plays a vital role in driving innovation, progress, 
+                and connectivity across various domains. It has revolutionized communication, education, healthcare, 
+                and countless other aspects of modern life. In the context of art, technology has expanded 
+                the possibilities for artistic expression, enabling the creation of new mediums, tools, 
+                and platforms for artists to explore and share their work. Advancements in digital imaging, 
+                virtual reality, and augmented reality have transformed the way art is experienced, 
+                offering immersive and interactive encounters with visual art. Moreover, technology has facilitated 
+                the preservation and global dissemination of art, making it accessible to diverse audiences 
+                and ensuring its longevity for future generations.</p>          
+              <p> In essence, both painting and technology are important in their own right. 
+                Painting serves as a timeless form of creative expression with deep cultural 
+                and emotional significance, while technology empowers artists with new tools and mediums, 
+                enriches the experience of art appreciation, and contributes to the preservation and accessibility 
+                of visual art.</p>    
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const startDate = urlParams.get('startDate');
+        const endDate = urlParams.get('endDate');
+        const duration = urlParams.get('duration');
+
+        const startDateParagraph = document.getElementById("startDateParagraph");
+        const durationParagraph = document.getElementById("durationParagraph");
+
+        if (startDate && endDate && duration) {
+            startDateParagraph.innerHTML = `<img class="img-icon-layout" src="asset/img/calendar-icon.webp" alt="calendar-icon">${startDate} - ${endDate}`;
+            durationParagraph.innerHTML = `<img class="img-icon-layout" src="asset/img/period-icon.jpg" alt="period-icon">${duration} month`;
+        } else {
+            console.log('Parameter URL startDate, endDate, atau duration tidak ditemukan');
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

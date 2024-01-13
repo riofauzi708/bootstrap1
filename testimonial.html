@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testimonial</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="asset/css/index.css">
+        <link rel="stylesheet" href="asset/css/nav.css">
+        <style>
+          h1 {
+            text-align: center;
+            margin: 35px auto;
+          }
+          .list-testi {
+            background-color: white; 
+            box-shadow: 0 0 1px 0;
+            border-radius: 5px;
+            width: 380px;
+            height: fit-content;
+            padding-bottom: 1%;
+          }
+          .img-testi {
+            width: 340px; 
+            height: 180px;
+            margin-top: 15px;
+            margin-left: 20px;
+          }
+          .p1 {
+            margin: 10px 20px;
+          }
+          .p2 {
+            margin: 15px 0 5px 250px; 
+            font-weight: bold;
+          }
+          .btn-color {
+            background-color: #111727;
+            color: white;
+            padding: 1px 25px;
+            font-weight: bold;
+          }
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="navbar-ul">
+                <div class="navbar-li">
+                <li>
+                    <img class="navbar-logo" src="asset/img/logo-dumbways.png" alt="">
+                </li>
+                <li>
+                    <a class="navbar-link" class="active" href="home.html">Home</a>
+                </li>
+                <li>
+                    <a class="navbar-link" class="active" href="blog.html">My Project</a>
+                </li>
+                <li>
+                  <a class="navbar-link" class="active" href="testimonial.html">Testimonials</a>
+                </li>
+                </div>
+                <div>
+                <li>
+                    <a href="contact.html" class="navbar-contact-btn">Contact me</a>
+                </li>
+                <img class="menu-icon-style" style="cursor: pointer;" onclick="openMenu(hidden)" src="asset/img/menu-icon.webp">
+                </div>
+            </ul>
+        </nav>
+        <div id="display-menu" class="display-menu, hidden">
+          <a  class="navbar-link-menu menu-active" href="home.html">Home</a>
+          <a  class="navbar-link-menu menu-active" href="blog.html">My Project</a>
+          <a  class="navbar-link-menu menu-active" href="contact.html">Contact Me</a>
+          <a  class="navbar-link-menu menu-active" href="testimonial.html">Testimonials</a>
+        </div>
+        <h1>My Testimonials</h1>
+        <p style="margin: 20px auto; text-align: center;">Rating By Star</p>
+        <div style="display: flex; flex-wrap: wrap; margin: 20px 0 40px 0; gap: 30px; justify-content: center; align-items: center;">
+          <button class="btn-color">All</button>
+          <button class="btn-color">1★</button>
+          <button class="btn-color">2★</button>
+          <button class="btn-color">3★</button>
+          <button class="btn-color">4★</button>
+          <button class="btn-color">5★</button>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;" id="testimonials">
+          <!-- <div class="list-testi">
+            <img class="img-testi" src="asset/img/testimonial1.jpg" alt="">
+            <p class="p1">"Ini sangat bagus"</p>
+            <p class="p2">- Rio fauzi</p>
+          </div>
+          <div class="list-testi">
+            <img class="img-testi" src="asset/img/testimonial2.jpg" alt="">
+            <p class="p1">"Boleh juga"</p>
+            <p class="p2">- Jodi</p>
+          </div>
+          <div class="list-testi">
+            <img class="img-testi" src="asset/img/testimonial3.jpg" alt="">
+            <p class="p1">"penampilan yang sempurna"</p>
+            <p class="p2">- Suparman</p>
+          </div>
+          <div class="list-testi">
+            <img class="img-testi" src="asset/img/testimonial4.jpg" alt="">
+            <p class="p1">"Aku tertarik"</p>
+            <p class="p2">- Marsha</p>
+          </div>
+          <div class="list-testi">
+            <img class="img-testi" src="asset/img/testimonial5.jpg" alt="">
+            <p class="p1">"Saya setuju"</p>
+            <p class="p2">- Dima ikmila</p>
+          </div> -->
+          
+          
+
+        </div>
+      <script src="asset/js/testimonial.js"></script>
+      <script src="asset/js/nav.js"></script>
+    </body>
+
+</html>
