@@ -31,12 +31,13 @@ class Testimonial {
 
     html() {
         return  `
-      <div class="card m-3" style="width: 20rem;">
+        <div class="card m-3" style="width: 20rem;">
         <img class="card-img-top" src="${this.#image}" alt="Card image cap">
         <div class="card-body">
-          <p class="card-text">"${this.#content}"</p>
+          <p class="card-text">${this.#content}</p>
           <h5 class="card-title text-right">- ${this.#author}</h5>
         </div>
+      </div>
       `
     }
 }
