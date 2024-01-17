@@ -8,13 +8,15 @@ app.set('views', 'src/views');
 app.use('/assets', express.static('src/assets'));
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/home', home);
+app.get('/', home);
+app.get('/home', projectList);
 app.get('/contact', contact);
 app.get('/project', project);
 app.get('/project-detail', projectDetail);
 app.get('/project-detail/:id', projectDetail);
 app.get('/testimonial', testimonial);
 app.post('/project', handlePostProject);
+app.post('/home', handlePostProject);
 app.get('/delete/:id', handleDeleteProject);
 app.get('/edit-project/:id', handleEditProject);
 
@@ -22,6 +24,10 @@ const data = [];
 
 function home(req, res) {
   res.render('index');
+}
+
+function projectList(req, res) {
+  res.render('project-list', { data });
 }
 
 function contact(req, res) {
@@ -70,7 +76,6 @@ function handlePostProject(req, res) {
     logoJava,
     logoJavascript,
   });
-
 
   res.redirect('/project');
 }
