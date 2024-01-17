@@ -91,7 +91,9 @@
                 </div>
             </div>
             <div class="mb-4">
+                <label for="uploadImage" class="form-label"><img src="assets/img/painting-mountain.jpg" class="p-3" width="150" height="100" alt="image upload"></label>
                 <div class="custom-file pmd-custom-file-filled">
+                    
                     <input id="uploadImage" name="uploadImage" type="file" class="custom-file-input" >
                     <label class="custom-file-label" for="uploadImage">Upload Image</label>
                 </div>
@@ -108,21 +110,29 @@
                 {{#each data}}
                  <div class="card rounded d-flex flex-wrap m-4" style="width: 20rem;">
                     <a href="/project-detail/{{@index}}">
-                        <img src="assets/img/painting-mountain.jpg" class="card-img-top p-3" alt="project image">
+                        <img src="assets/img/{{this.uploadImage}}" class="card-img-top p-3" alt="project image">
                     </a>
                     <div class="card-body">
                         <a href="/project-detail/{{@index}}">
                         <h3 class="card-title">{{this.projectName}}</a></h3>
-                        <p class="card-text">durasi : 3 bulan</p>
+                        <p class="card-text">durasi : {{this.duration}} bulan</p>
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{this.description}}</p>
                     </div>
                     <div class="d-flex my-2 justify-content-start mx-auto">
-                        <img class="mx-3" src="assets/img/logo-playstore.png" alt="" width="30" height="30">
-                        <img class="mx-3" src="assets/img/logo-android.png" alt="" width="31" height="31">
-                        <img class="mx-3" src="assets/img/logo-java.png" alt="" width="29" height="29">
-                        <img class="mx-3" src="assets/img/logo-javascript.png" alt="" width="32" height="32">
+                        {{#if this.nodeJs}}
+                            <img class="mx-3" src="assets/img/logo-playstore.png" alt="" width="30" height="30">
+                        {{/if}}
+                        {{#if this.nextJs}}
+                            <img class="mx-3" src="assets/img/logo-android.png" alt="" width="31" height="31">
+                        {{/if}}
+                        {{#if this.reactJs}}
+                            <img class="mx-3" src="assets/img/logo-java.png" alt="" width="29" height="29">
+                        {{/if}}
+                        {{#if this.typeScript}}
+                            <img class="mx-3" src="assets/img/logo-javascript.png" alt="" width="32" height="32">
+                        {{/if}}
                     </div>
                     <div class="card-body d-flex">
                         <button class="btn btn-dark w-50 rounded py-0 mx-1">
