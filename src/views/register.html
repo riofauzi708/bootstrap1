@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #e3e7eb; padding-bottom: 25px;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src="assets/img/logo-dumbways.png" alt="" width="50" height="35">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-black" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="/project">Add Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="/testimonial">Testimonials</a>
+                </li>
+            </ul>
+                <a class="nav-link text-dark" href="/testimonial">Register</a>
+                <a class="nav-link text-dark" href="/testimonial">Login</a>
+            <a href="/contact" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
+        </div>
+    </nav>
+
+    <h1 class="text-center my-5">REGISTER YOUR ACCOUNT</h1>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password">
+                    </div>
+                    <div class="d-flex justify-content-end pb-4 mt-4">
+                    <button type="submit" onclick="submitData()" class="btn-submit btn btn-dark rounded-pill">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="assets/js/contact.js"></script>
+</body>
+</html>

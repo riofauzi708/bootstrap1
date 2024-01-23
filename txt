@@ -1,0 +1,46 @@
+try {
+    const projects = await SequelizePool.query("SELECT * FROM tb_project", { type: QueryTypes.SELECT})
+    res.render('project-list', { data: projects });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
+
+
+  try {
+    const { projectName, startDate, endDate, description, nodeJs, nextJs, reactJs, typeScript, uploadImage } = req.body;
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(endDate);
+    const diffInMonths = (endDateObj.getFullYear() - startDateObj.getFullYear()) * 12 + (endDateObj.getMonth() - startDateObj.getMonth());
+  
+    const logoPlaystore = nodeJs ? '<img class="mx-3" src="assets/img/logo-playstore.png" alt="" width="30" height="30">' : '';
+    const logoAndroid = nextJs ? '<img class="mx-3" src="assets/img/logo-android.png" alt="" width="31" height="31">' : '';
+    const logoJava = reactJs ? '<img class="mx-3" src="assets/img/logo-java.png" alt="" width="29" height="29">' : '';
+    const logoJavascript = typeScript ? '<img class="mx-3" src="assets/img/logo-javascript.png" alt="" width="32" height="32">' : '';
+  
+    data.push({
+      projectName,
+      startDate,
+      endDate,
+      duration: diffInMonths,
+      description,
+      nodeJs,
+      nextJs,
+      reactJs,
+      typeScript,
+      uploadImage,
+      logoPlaystore,
+      logoAndroid,
+      logoJava,
+      logoJavascript,
+    });
+  
+    const query = await SequelizePool.query(`INSERT INTO tb_project (projectName, startDate, endDate, description, nodeJs, nextJs, reactJs, typeScript, uploadImage) 
+    VALUES ('${projectName}', '${startDate}', '${endDate}', '${description}', ${nodeJs}, ${nextJs}, ${reactJs}, ${typeScript}, '${uploadImage}')`);
+    console.log(query);
+      res.redirect('/project');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }
+  
