@@ -26,6 +26,8 @@ app.get('/contact', contact);
 app.get('/project', project);
 app.get('/project-detail/:id', projectDetail);
 app.get('/testimonial', testimonial);
+app.get('/login', login)
+app.get('/register', register)
 app.get('/delete/:id', handleDeleteProject);
 app.get('/edit-project/:id', handleEditProject);
 app.post('/project', handlePostProject);
@@ -77,6 +79,14 @@ async function projectDetail(req, res) {
 
 function testimonial(req, res) {
   res.render('testimonial');
+}
+
+function login(req, res) {
+  res.render('login')
+}
+
+function register(req, res) {
+  res.render('register')
 }
 
 async function handlePostProject(req, res) {
