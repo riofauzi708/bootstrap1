@@ -19,7 +19,7 @@
     <div class="bg-body">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">
-            <img src="assets/img/logo-dumbways.png" alt="" width="50" height="35">
+            <img src="/assets/img/logo-dumbways.png" alt="" width="50" height="35">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,14 +30,19 @@
                     <a class="nav-link text-black" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-black" href="/project">Add Project</a>
+                    <a class="nav-link navbar-brand text-black" href="/project">Add Project</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-black" href="/testimonial">Testimonials</a>
                 </li>
             </ul>
-                <a class="nav-link text-dark" href="/register">Register</a>
+                {{#if addLogin}}
+                <a class="nav-link text-dark" href="#">Hallo, {{users}}</a>
+                <a class="nav-link text-dark" href="/logout">Logout</a>
+                {{else}}
+                <a class="nav-link navbar-brand text-dark" href="/register">Register</a>
                 <a class="nav-link text-dark" href="/login">Login</a>
+                {{/if}}
             <a href="/contact" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
         </div>
     </nav>
@@ -110,11 +115,12 @@
                 {{#each data}}
                  <div class="card rounded d-flex flex-wrap m-4" style="width: 20rem;">
                     <a href="/project-detail/{{this.id}}">
-                        <img src="assets/img/painting-mountain.jpg" class="card-img-top p-3" alt="project image">
+                        <img src="/assets/img/painting-mountain.jpg" class="card-img-top p-3" alt="project image">
                     </a>
                     <div class="card-body">
                         <a href="/project-detail/{{this.id}}">
                         <h3 class="card-title">{{this.projectName}}</a></h3>
+                        <p>Author: {{this.author}}</p>
                         <p class="card-text">durasi : 3 bulan</p>
                     </div>
                     <div class="card-body">

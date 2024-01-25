@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active text-black" href="/home">Home</a>
+                    <a class="nav-link navbar-brand active text-black" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-black" href="/project">Add Project</a>
@@ -36,8 +36,13 @@
                     <a class="nav-link text-black" href="/testimonial">Testimonials</a>
                 </li>
             </ul>
+                {{#if addLogin}}
+                <a class="nav-link text-dark" href="/register">Hallo, {{users}}</a>
+                <a class="nav-link text-dark" href="/logout">Logout</a>
+                {{else}}
                 <a class="nav-link text-dark" href="/register">Register</a>
                 <a class="nav-link text-dark" href="/login">Login</a>
+                {{/if}}
             <a href="/contact" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
         </div>
     </nav>
@@ -45,6 +50,16 @@
     <div class="bg-body2">
             {{#each data}}
                 <div class="card mb-3" style="width: 100%;">
+                    {{#if ../addLogin}}
+                            <div class="d-flex flex-row-reverse mt-3">
+                                <a href="/delete/{{this.id}}">
+                            <button class="btn btn-dark rounded px-5 mx-2">delete</button>
+                                </a>
+                                <a href="/edit-project/{{this.id}}">
+                            <button class="btn btn-dark rounded px-5 mx-2">edit</button>
+                                </a>
+                            </div>
+                            {{/if}}
                     <div class="row g-0">
                         <div class="col-4">
                             <a href="/project-detail/{{this.id}}">
@@ -54,6 +69,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <a href="/project-detail/{{this.id}}"><h5 class="card-title">{{this.projectName}}</h5></a>
+                                <p>Author: {{this.author}}</p>
                                 <p class="card-text"><small class="text-body-secondary">durasi : {{this.duration}} bulan</small></p>
                                 <p class="card-text">{{this.description}}</p>
                             </div>
@@ -71,17 +87,6 @@
                                         <img class="mx-3" src="assets/img/logo-javascript.png" alt="" width="32" height="32">
                                     {{/if}}
                                 </div>
-                                <div class="d-flex mt-3">
-                                <a href="/edit-project/{{this.id}}">
-                                    <button class="btn btn-dark w-50 rounded p-1 mx-2">
-                                        edit</a>
-                                    </button>
-                                    <a href="/delete/{{this.id}}">
-                                    <button class="btn btn-dark w-50 rounded p-1 mx-2">
-                                        delete</a>
-                                    </button>
-                                </div>
-                            </div>
                             
                         </div>
                     </div>

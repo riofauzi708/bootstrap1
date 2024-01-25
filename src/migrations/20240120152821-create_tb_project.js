@@ -2,9 +2,9 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('tb_project', {
+    await queryInterface.createTable('tb_projects', {
       id: {
-        type: Sequelize.SERIAL,
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -12,6 +12,13 @@ module.exports = {
       projectName: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      author_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'tb_users',
+          key: 'id'
+        }
       },
       startDate: {
         type: Sequelize.DATE,
@@ -53,6 +60,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('tb_project');
+    await queryInterface.dropTable('tb_projects');
   },
 };

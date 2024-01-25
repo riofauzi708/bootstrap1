@@ -21,7 +21,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand active" href="/">
+        <a class="navbar-brand navbar-brand" href="/">
             <img src="assets/img/logo-dumbways.png" alt="" width="50" height="35">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,24 +39,38 @@
                     <a class="nav-link text-black" href="/testimonial">Testimonials</a>
                 </li>
             </ul>
-            <a class="nav-link text-dark" href="/register">Register</a>
+            {{#if addLogin}}
+            <a class="nav-link navbar-brand text-dark" href="#">Hallo, {{users}}</a>
+            <a class="nav-link text-dark" href="/logout">Logout</a>
+            {{else}}
+            <a class="nav-link navbar-brand text-dark" href="/register">Register</a>
             <a class="nav-link text-dark" href="/login">Login</a>
+            {{/if}}
             <a href="/contact" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
         </div>
     </nav>
+
+    {{#if messages.success}}
+    <div class="alert alert-success" role="alert">
+        <div class="container">
+            {{messages.success}}
+        </div>
+    </div>
+    {{/if}}
+
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-6 bg-white p-3 mx-auto w-75">
                 <h1>Hi! Welcome to my hut</h1>
-                <p class="text-justify">My name's Rio, I learn coding because I'm interested in becoming a full-stack developer...
+                <p class="text-justify mt-3">My name's Rio, I learn coding because I'm interested in becoming a full-stack developer...
                     i'm looking transition to a career in web development and see full-stack development as a versatile
                     and in-demand skill set that can open up new career opportunities for me.
                 </p>
-                <a href="/contact" class="btn btn-dark mt-3 rounded-pill">Contact</a>
-                <a href="#" class="btn btn-light mt-3">Download CV</a>
+                <a href="/contact" class="btn btn-dark mt-3 mb-1 rounded-pill">Contact</a>
+                <a href="#" class="btn btn-light mt-3 mb-1">Download CV</a>
                 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col mt-2">
+                    <div class="col mt-3">
                         <div class="card">
                             <img src="assets/img/logo-html.png" class="card-img-top" alt="logo html" width="auto" height="150">
                             <div class="card-body">
@@ -65,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mt-2">
+                    <div class="col mt-3">
                         <div class="card">
                             <img src="assets/img/logo-css.png" class="card-img-top" alt="logo css" width="auto" height="150">
                             <div class="card-body">
@@ -74,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mt-2">
+                    <div class="col mt-3">
                         <div class="card">
                             <img src="assets/img/javascript.png" class="card-img-top" alt="logo javascript" width="auto" height="140">
                             <div class="card-body">
@@ -85,19 +99,19 @@
                     </div>
                 </div>
                 
-                <h5 class="mt-4">Found me on</h5>
+                <h5 class="mt-3">Found me on</h5>
                 <div class="mt-1 align-items-start">
                     <a href="https://www.linkedin.com/in/rio-fauzi-900858248/" target="_blank">
-                        <img src="assets/img/linkedin_icon.png" alt="" width="28" height="28">
+                        <img class="mx-1" src="assets/img/linkedin_icon.png" alt="" width="28" height="28">
                     </a>
                     <a href="https://www.instagram.com/rio_fauzii/" target="_blank">
-                        <img src="assets/img/logo-ig.png" alt="" width="28" height="28">
+                        <img class="mx-1" src="assets/img/logo-ig.png" alt="" width="28" height="28">
                     </a>
                     <a href="https://www.facebook.com/rio.fauzi.378/" target="_blank">
-                        <img src="assets/img/logo-fb.png" alt="" width="30" height="30">
+                        <img class="mx-1" src="assets/img/logo-fb.png" alt="" width="30" height="30">
                     </a>
                     <a href="https://github.com/riofauzi708" target="_blank">
-                        <img src="assets/img/github-icon.png" alt="" width="30" height="30">
+                        <img class="mx-1" src="assets/img/github-icon.png" alt="" width="30" height="30">
                     </a>
                 </div>
             </div>

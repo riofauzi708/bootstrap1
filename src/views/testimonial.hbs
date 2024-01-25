@@ -22,11 +22,16 @@
                     <a class="nav-link text-black" href="/project">Add Project</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-black" href="/testimonial">Testimonials</a>
+                    <a class="nav-link navbar-brand text-dark" href="/testimonial">Testimonials</a>
                 </li>
             </ul>
+                {{#if addLogin}}
+                <a class="nav-link text-dark" href="#">Hallo, {{users}}</a>
+                <a class="nav-link text-dark" href="/logout">Logout</a>
+                {{else}}
                 <a class="nav-link text-dark" href="/register">Register</a>
                 <a class="nav-link text-dark" href="/login">Login</a>
+                {{/if}}
             <a href="/contact" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
         </div>
     </nav>

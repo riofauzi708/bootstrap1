@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
+    <title>Log in</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -25,18 +25,27 @@
                     <a class="nav-link text-black" href="/testimonial">Testimonials</a>
                 </li>
             </ul>
-                <a class="nav-link text-black" href="/register">Register</a>
-                <a class="nav-link active text-black" href="/login">Login</a>
+                <a class="nav-link text-dark" href="/register">Register</a>
+                <a class="nav-link navbar-brand text-dark" href="/login">Login</a>
             <a href="/contact" class="btn btn-dark my-2 my-sm-0 rounded-pill">Contact me</a>
         </div>
     </nav>
+
+    {{#if messages.failed}}
+    <div class="alert alert-danger" role="alert">
+        <div class="container">
+            {{messages.failed}}
+        </div>
+    </div>
+    {{/if}}
 
     <h1 class="text-center my-5">LOGIN TO YOUR ACCOUNT</h1>
 
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form><div class="form-group">
+                <form method="post" action="/login">
+                    <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email">
                     </div>

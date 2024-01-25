@@ -7,9 +7,13 @@ const { development } = require('./src/config/config.json');
 const app = express();
 const port = 3000;
 const SequelizePool = new Sequelize(development);
+const bcrypt = require('bcrypt');
+const session = require('express-session')
+const flash = require('express-flash')
 
 // Import models
 const Project = require('./src/models/project');
+const tb_users = require('./src/models/tb_users');
 
 // Set up Handlebars for template engine
 app.set('view engine', 'hbs');
@@ -18,6 +22,18 @@ app.set('views', 'src/views');
 // Set up middleware
 app.use('/assets', express.static('src/assets'));
 app.use(express.urlencoded({ extended: false }));
+app.use(session({
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    maxAge: 2 * 60 * 60 * 1000
+  },
+  resave: false,
+  store: session.MemoryStore(),
+  secret: 'session_storage',
+  saveUninitialized: true
+}))
+app.use(flash())
 
 // Define routes
 app.get('/', home);
@@ -32,19 +48,30 @@ app.get('/delete/:id', handleDeleteProject);
 app.get('/edit-project/:id', handleEditProject);
 app.post('/project', handlePostProject);
 app.post('/home', handlePostProject);
-
+app.post('/register', addRegister)
+app.post('/login', addLogin)
+app.get('/logout', handleLogout);
 
 const data = [];
 
 // Define route handlers
 async function home(req, res) {
-  res.render('index');
+  res.render('index', {
+    addLogin: req.session.addLogin,
+    users: req.session.users
+  })
 }
 
 async function projectList(req, res) {
   try {
-    const projects = await SequelizePool.query("SELECT * FROM tb_projects", { type: QueryTypes.SELECT})
-    res.render('project-list', { data: projects });
+    const projects = await SequelizePool.query(`SELECT tb_projects.*, tb_users.name AS author
+    FROM tb_projects
+    JOIN tb_users 
+    ON tb_projects.author_id = tb_users.id;`, { type: QueryTypes.SELECT})
+    res.render('project-list', { data: projects, 
+      addLogin: req.session.addLogin,
+      users: req.session.users
+     });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
@@ -52,13 +79,18 @@ async function projectList(req, res) {
 }
 
 function contact(req, res) {
-  res.render('contact');
+  res.render('contact', {addLogin: req.session.addLogin,
+    users: req.session.users});
 }
 
 async function project(req, res) {
   try {
-    const projects = await SequelizePool.query("SELECT * FROM tb_projects", { type: QueryTypes.SELECT})
-    res.render('project', { data: projects });
+    const projects = await SequelizePool.query(`SELECT tb_projects.*, tb_users.name AS author
+    FROM tb_projects
+    JOIN tb_users 
+    ON tb_projects.author_id = tb_users.id;`, { type: QueryTypes.SELECT})
+    res.render('project', { data: projects, addLogin: req.session.addLogin,
+      users: req.session.users });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
@@ -68,9 +100,13 @@ async function project(req, res) {
 async function projectDetail(req, res) {
   const { id } = req.params;
   try {
-    const query = `SELECT * FROM tb_projects WHERE id = ${id}`;
+    const query = `SELECT tb_projects.*, tb_users.name AS author
+    FROM tb_projects
+    JOIN tb_users 
+    ON tb_projects.author_id = tb_users.id`;
     const projects = await SequelizePool.query(query, { type: QueryTypes.SELECT });
-    res.render('project-detail', { data: projects[0] });
+    res.render('project-detail', { data: projects[0], addLogin: req.session.addLogin,
+      users: req.session.users });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
@@ -78,21 +114,25 @@ async function projectDetail(req, res) {
 }
 
 function testimonial(req, res) {
-  res.render('testimonial');
+  res.render('testimonial', {addLogin: req.session.addLogin,
+    users: req.session.users});
 }
 
 function login(req, res) {
-  res.render('login')
+  res.render('login', {addLogin: req.session.addLogin,
+    users: req.session.users})
 }
 
 function register(req, res) {
-  res.render('register')
+  res.render('register', {addLogin: req.session.addLogin,
+    users: req.session.users})
 }
 
 async function handlePostProject(req, res) {
   try {
   const { projectName, startDate, endDate, description, nodeJs, nextJs, reactJs, typeScript, uploadImage } = req.body;
-  
+  const author_id = req.session.idUser
+
    // Konversi nilai boolean ke string untuk kolom yang menggunakan tipe data string di basis data
    const nodeJsString = nodeJs ? 'true' : 'false';
    const nextJsString = nextJs ? 'true' : 'false';
@@ -136,8 +176,8 @@ async function handlePostProject(req, res) {
     logoJavascript,
   });
 
-  const query = await SequelizePool.query(`INSERT INTO tb_projects ("projectName", "startDate", "endDate", duration, description, "nodeJs", "nextJs", "reactJs", "typeScript", "uploadImage") 
-        VALUES ('${projectName}', '${startDate}', '${endDate}', ${duration}, '${description}', ${nodeJsString}, ${nextJsString}, ${reactJsString}, ${typeScriptString}, '${uploadImage}')`);
+  const query = await SequelizePool.query(`INSERT INTO tb_projects ("projectName", author_id, "startDate", "endDate", duration, description, "nodeJs", "nextJs", "reactJs", "typeScript", "uploadImage") 
+        VALUES ('${projectName}', ${author_id},'${startDate}', '${endDate}', ${duration}, '${description}', ${nodeJsString}, ${nextJsString}, ${reactJsString}, ${typeScriptString}, '${uploadImage}')`);
     console.log(query);
     res.redirect('/project');
   } catch (error) {
@@ -174,7 +214,64 @@ async function handleEditProject(req, res) {
   }
 }
 
+async function addRegister(req, res) {
+  try {
+    const { name, email, password } = req.body
+    const salt = 10
 
+    res.redirect('/login')
+    bcrypt.hash(password, salt, (err, hashPassword) => {
+      const query = SequelizePool.query(`INSERT INTO tb_users ("name", "email", "password")
+      VALUES ('${name}', '${email}', '${hashPassword}')`);
+      console.log(query);
+    })
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error')
+  }
+}
+
+async function addLogin(req, res) {
+  try {
+    const { email, password } = req.body
+    
+    const checkEmail = await SequelizePool.query(`SELECT * FROM tb_users WHERE email = '${email}'`, 
+    {type: QueryTypes.SELECT })
+    
+    if(!checkEmail.length) {
+      req.flash('failed', 'Email is not register');
+      return res.redirect('/login')
+    }
+    
+
+    bcrypt.compare(password, checkEmail[0].password, function(err, result) {
+      if(!result) {
+        return res.redirect("/login")
+      } else {
+        req.session.addLogin = true
+        req.session.users = checkEmail[0].name
+        req.session.idUser = checkEmail[0].id
+        req.flash('success', 'Welcome..');
+        return res.redirect('/')
+      }
+    });
+
+} catch (error) {
+  console.error(error);
+  res.status(500).send('Server Error')
+}
+}
+
+function handleLogout(req, res) {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Server Error');
+    } else {
+      res.redirect('/login');
+    }
+  });
+}
 
 // Start the server
 app.listen(port, () => {
